@@ -1,0 +1,60 @@
+<a href="/feedbacks">Wróć do poprzedniej strony</a>
+
+<div class="section is-medium">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 is-offset-3">
+        <div class="box">
+			<div class="title">Dodaj opinię</div>
+          <div class="body">
+            <form class="form-wrapper" action="/feedbacks" method="POST">
+				<div class="field">
+                <label class="label">Autor</label>
+                <div class="control">
+                  <input name="author" type="text" class="input is-rounded" placeholder="Jak się nazywasz?" required minlength="8" maxlength="20">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Tytuł</label>
+                <div class="control">
+                  <input name="title" type="text" class="input is-rounded" placeholder="Wpisz tytuł" required minlength="8" maxlength="30">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Opis</label>
+                <div class="control">
+                  <textarea name="description" class="textarea is-rounded" placeholder="Dodaj opis" required  minlength="1" maxlength="1000"></textarea>
+                </div>
+              </div>
+			  <div class="control field">
+  <label class="radio">
+    <input type="radio" name="rating" value="1" required>
+    1
+  </label>
+  <label class="radio">
+    <input type="radio" name="rating" value="2">
+    2
+  </label>
+    <label class="radio">
+    <input type="radio" name="rating" value="3">
+    3
+  </label>
+    <label class="radio">
+    <input type="radio" name="rating" value="4">
+    4
+  </label>
+    <label class="radio">
+    <input type="radio" name="rating" value="5">
+    5
+  </label>
+</div>
+			  <div class="field">
+				  <button class="button is-primary is-rounded is-fullwidth" type="submit">Wyślij</button>
+			  </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

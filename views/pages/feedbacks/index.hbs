@@ -1,0 +1,30 @@
+<section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container box">
+              <a href="/feedbacks/add" class="button is-info is-fullwidth is-rounded">Dodaj opinię</a><br /> <br />
+<ul>
+{{#each items}}   
+      <article class="media">
+      <figure class="media-left">
+        <p class="image is-48x48">
+          <span class="is-size-3">{{ rating }}</span>/5
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{title}}</strong>
+            <br>
+            {{description}}
+            <br>
+            <small>Autor: <span class="has-text-weight-bold">{{author}}</span> · <a href="/feedbacks/{{id}}">Skomentuj ({{commentCount}})</a> · {{> date date=createdDate }}</small>
+          </p>
+        </div>
+		</div>
+      </article>
+{{/each}}
+</ul>
+
+</div>
+		</div>
+</section>

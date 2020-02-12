@@ -1,0 +1,58 @@
+<section class="hero is-fullheight">
+	<a href="/feedbacks">Wróć do poprzedniej strony</a>
+        <div class="hero-body">
+            <div class="container box">
+				<article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64 has-text-centered">
+          <span class="is-size-2">{{ feedback.rating }}</span>/5
+        </p>
+      </figure>
+  <div class="media-content">
+    <div class="content">
+		<p class="title">{{ feedback.title }}<small style="font-weight: 100;" class="is-size-4"> · {{ feedback.author }} · {{>date date=feedback.createdDate}}</small></p>
+      <div>
+        {{ feedback.description }}
+      </div>
+    </div>
+
+	<article class="media">
+  <form class="media-content" action="/feedbacks/comments" method="POST">
+	  <div class="field">
+                <div class="control">
+                  <input name="author" type="text" class="input is-rounded" placeholder="Jak się nazywasz?" required minlength="8" maxlength="20">
+                </div>
+              </div>
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea" name="body" placeholder="Napisz komentarz" required maxlength="1000" minlength="1"></textarea>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button type="submit" class="button is-primary is-rounded">Dodaj komentarz</button>
+      </p>
+    </div>
+	 <input type="hidden" name="feedbackId" value="{{feedback.id}}" />
+  </form>
+</article>
+
+	{{#each comments.items}}   
+
+    <article class="media">
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong>{{ author }}</strong> · <small>{{>date date=createdDate}}</small>
+            <br>
+            {{ body }}
+          </p>
+        </div>
+      </div>
+    </article>
+	{{/each}}
+  </div>
+</article>
+            </div>
+        </div>
+</section>
