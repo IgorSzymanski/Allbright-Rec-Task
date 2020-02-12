@@ -4,14 +4,24 @@ import { AppService } from './app.service'
 import { CommentsModule } from './comments/comments.module'
 import { FeedbackModule } from './feedback/feedback.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Connection } from 'typeorm'
 import * as OrmConfig from './orm.config'
+import { RateLimiterModule, RateLimiterInterceptor } from 'nestjs-rate-limiter'
+import { APP_INTERCEPTOR } from '@nestjs/core'
 
 @Module({
-	imports: [TypeOrmModule.forRoot(OrmConfig), CommentsModule, FeedbackModule],
+	imports: [
+		TypeOrmModule.forRoot(OrmConfig),
+		CommentsModule,
+		FeedbackModule,
+		RateLimiterModule,
+	],
 	controllers: [AppController],
-	providers: [AppService],
+	providers: [
+		AppService,
+		{
+			provide: APP_INTERCEPTOR,
+			useClass: RateLimiterInterceptor,
+		},
+	],
 })
-export class AppModule {
-	constructor(private readonly connection: Connection) {}
-}
+export class AppModule {}
